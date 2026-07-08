@@ -25,20 +25,23 @@
     </div>
 
     <script>
-        function buscarTabla() {
-            const n = document.getElementById('n_tabla').value;
-            const res = document.getElementById('resultado');
-            if(n) {
-                const ruta = `static/img/tablas/tabla_${n}.jpg`;
-                res.innerHTML = `
-                    <div class="result-container">
-                        <img src="${ruta}" class="bingo-card-img" onerror="alert('Tabla no encontrada');">
-                        <br>
-                        <a href="${ruta}" download="tabla_${n}.jpg" class="btn-download">DESCARGAR</a>
-                    </div>
-                `;
-            }
+    function buscarTabla() {
+        const n = document.getElementById('n_tabla').value;
+        const res = document.getElementById('resultado');
+        
+        const numero = n.padStart(3, '0');
+        const ruta = `IMG/tablas/TABLA_${numero}.webp`;
+        
+        if(n) {
+            res.innerHTML = `
+                <div class="result-container">
+                    <img src="${ruta}" class="bingo-card-img" onerror="alert('Tabla no encontrada: ${ruta}');">
+                    <br>
+                    <a href="${ruta}" download="TABLA_${numero}.webp" class="btn-download">DESCARGAR</a>
+                </div>
+            `;
         }
-    </script>
+    }
+</script>
 </body>
 </html> 
