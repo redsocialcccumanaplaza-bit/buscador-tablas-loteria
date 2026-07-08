@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gran Bingo 360</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="logo-container">
+            <img src="static/img/logo.png" class="logo">
+        </div>
+
+        <div class="card">
+            <h1>BUSCAR Y DESCARGAR TABLA</h1>
+            
+            <div class="search-form">
+                <input type="text" id="n_tabla" placeholder="N° Tabla" autocomplete="off">
+                <button onclick="buscarTabla()" class="btn-ver">Ver</button>
+            </div>
+
+            <div id="resultado"></div>
+        </div>
+    </div>
+
+    <script>
+        function buscarTabla() {
+            const n = document.getElementById('n_tabla').value;
+            const res = document.getElementById('resultado');
+            if(n) {
+                const ruta = `static/img/tablas/tabla_${n}.jpg`;
+                res.innerHTML = `
+                    <div class="result-container">
+                        <img src="${ruta}" class="bingo-card-img" onerror="alert('Tabla no encontrada');">
+                        <br>
+                        <a href="${ruta}" download="tabla_${n}.jpg" class="btn-download">DESCARGAR</a>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html> 
